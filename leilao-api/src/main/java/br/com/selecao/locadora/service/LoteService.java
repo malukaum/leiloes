@@ -1,7 +1,7 @@
 package br.com.selecao.locadora.service;
 
-import br.com.selecao.locadora.business.UnidadeBO;
-import br.com.selecao.locadora.business.view.UnidadeVO;
+import br.com.selecao.locadora.business.LoteBO;
+import br.com.selecao.locadora.business.view.LoteVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,37 +16,36 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/unidades")
-public class UnidadeService {
+@RequestMapping(value = "/lotes")
+public class LoteService {
 
-    private final UnidadeBO unidadeBO;
+    private final LoteBO loteBO;
 
     @GetMapping
     public ResponseEntity<Object> buscarTodos() {
-        return new ResponseEntity<>(unidadeBO.buscarTodos(), HttpStatus.OK);
+        return new ResponseEntity<>(loteBO.buscarTodos(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> buscarUnidade(@PathVariable("id") final Long id) {
-        return new ResponseEntity<>(unidadeBO.buscarUnidade(id), HttpStatus.OK);
+    public ResponseEntity<Object> buscarLote(@PathVariable("id") final Long id) {
+        return new ResponseEntity<>(loteBO.buscarLote(id), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Void> inserirUnidade(@RequestBody final UnidadeVO unidade) {
-        unidadeBO.inserirUnidade(unidade);
+    public ResponseEntity<Void> inserirLote(@RequestBody final LoteVO unidade) {
+        loteBO.inserirLote(unidade);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> alterarUnidade(@PathVariable("id") final Long id,
-                                               @RequestBody final UnidadeVO unidade) {
-        unidadeBO.alterarUnidade(id, unidade);
+    public ResponseEntity<Void> alterarLote(@PathVariable("id") final Long id, @RequestBody final LoteVO unidade) {
+        loteBO.alterarLote(id, unidade);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarUnidade(@PathVariable("id") final Long id) {
-        unidadeBO.deletarUnidade(id);
+    public ResponseEntity<Void> deletarLote(@PathVariable("id") final Long id) {
+        loteBO.deletarLote(id);
         return ResponseEntity.ok().build();
     }
 

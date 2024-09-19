@@ -1,22 +1,56 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Início',
+    components: {
+      default: () => import('../views/Inicio.vue'),
+      sidebar: () => import('../components/Navbar.vue')
+    }
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/unidades',
+    name: 'Unidades',
+    components: {
+      default: () => import('../views/Unidades.vue'),
+      sidebar: () => import('../components/Navbar.vue')
+    }
+  },
+  {
+    path: '/leiloes',
+    name: 'Leilões',
+    components: {
+      default: () => import('../views/Leiloes.vue'),
+      sidebar: () => import('../components/Navbar.vue')
+    }
+  },
+  {
+    path: '/empresas',
+    name: 'Empresas',
+    components: {
+      default: () => import('../views/Empresas.vue'),
+      sidebar: () => import('../components/Navbar.vue')
+    }
+  },
+  {
+    path: '/empresa',
+    name: 'Empresa',
+    components: {
+      default: () => import('../views/Empresa.vue'),
+      sidebar: () => import('../components/Navbar.vue')
+    }
+  },
+  {
+    path: '/empresa/:id',
+    name: 'Empresa',
+    components: {
+      default: () => import('../views/Empresa.vue'),
+      sidebar: () => import('../components/Navbar.vue')
+    }
   }
 ]
 
